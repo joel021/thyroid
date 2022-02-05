@@ -16,8 +16,8 @@ It is a user interface to utilize the binary tyroid malignant cytology classific
 
 *Linux*
 
-1. Just download the project, keep this folder and run "main.py" file. You should install the dependences before:
-    * Python 3.7 or 3.9 (recommeded)
+1. Just download the project, keep this folder and run "main.py" file. You should install the dependencies before:
+    * Python 3.7 or 3.9 (recommended)
     * <a href="https://pillow.readthedocs.io/en/stable/installation.html">Pillow</a>
     * <a href="https://flask.palletsprojects.com/en/2.0.x/installation/">Flask</a>
     * <a href="https://openslide.org/download/">OpenSlide</a> on Linux Distribution Packages section
