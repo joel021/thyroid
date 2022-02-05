@@ -232,7 +232,7 @@ def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
         user_data = UserData(path="/thyroid_user_files/printed_images/"+app.last_file_name[0:app.last_file_name.index(".")])        
-        f = open(os.path.join(user_data.path, app.last_tile_name),"wb")
+        f = open(str(user_data.path)+"/"+app.last_tile_name,"wb")
         f.write(base64.b64decode(request.get_json()['img'].replace('data:image/png;base64,','')))
         f.close()
         return make_response(json.dumps(True))

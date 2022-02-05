@@ -1,5 +1,4 @@
 import json
-from pathlib import Path
 import os
 
 """
@@ -8,7 +7,7 @@ This class manage all user information persistence, in json files
 class UserData():
 
     def __init__(self, path='/thyroid_user_files'):
-        self.path = os.path.join(Path.home(),path)
+        self.path = json.load(open("instalation_path.json","r"))['path']+path
         self._create_path(self.path)
 
     """
@@ -18,7 +17,7 @@ class UserData():
         sub_ps = path.split("/")
         uri = sub_ps[0]
         for i in range(1, len(sub_ps)):
-            uri = os.path.join(uri,sub_ps[i])
+            uri = uri+"/"+sub_ps[i]
 
             if not os.path.isdir(uri):
                 os.mkdir(uri)
