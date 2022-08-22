@@ -7,7 +7,7 @@ This class manage all user information persistence, in json files
 class UserData():
 
     def __init__(self, path='/thyroid_user_files'):
-        self.path = json.load(open("instalation_path.json","r"))['path']+path
+        self.path = os.path.expanduser("~")+"/"+path
         self._create_path(self.path)
 
     """

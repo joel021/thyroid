@@ -112,13 +112,11 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.from_envvar('DEEPZOOM_MULTISERVER_SETTINGS', silent=True)
 
-
 @app.before_first_request
 def _setup():
+    app.count_print = 0
     app.basedir = None
     app.configured = False
-    app.last_tile_name = None
-    app.last_file_name = None
 
 def _get_slide(path):
     app.last_file_name = path
@@ -235,7 +233,8 @@ def upload_file():
         f = open(str(user_data.path)+"/"+app.last_tile_name,"wb")
         f.write(base64.b64decode(request.get_json()['img'].replace('data:image/png;base64,','')))
         f.close()
-        return make_response(json.dumps(True))
+        app.count_print += 1
+        return make_response(json.dumps(dict({"count": app.count_print})))
 
     return make_response({"result":json.dumps(False), "cause": "method is not POST"})
 
